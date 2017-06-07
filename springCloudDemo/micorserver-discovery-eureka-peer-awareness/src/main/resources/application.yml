@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: micorserver-discovery-ha
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: user
+    password: 123456
+
+---
+server:
+  port: 8761
+spring:
+  profiles: peer1
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    healthcheck:
+        enabled: true
+    serviceUrl:
+      defaultZone: http://user:123456@peer2:8762/eureka/,http://user:123456@peer3:8763/eureka/
+---
+server:
+  port: 8762
+spring:
+  profiles: peer2
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    healthcheck:
+        enabled: true
+    serviceUrl:
+      defaultZone: http://user:123456@peer1:8761/eureka/,http://user:123456@peer3:8763/eureka/
+
+---
+server:
+  port: 8763
+spring:
+  profiles: peer3
+eureka:
+  instance:
+    hostname: peer3
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://user:123456@peer1:8761/eureka/,http://user:123456@peer2:8761/eureka/
+
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+#    serviceUrl:
+#      defaultZone: http://user:123456@${eureka.instance.hostname}:${server.port}/eureka/
+#
+#security:
+#  basic:
+#    enabled: true
+#  user:
+#    name: user
+#    password: 123456
+

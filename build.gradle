@@ -1,0 +1,81 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.6.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		maven {
+			url 'http://mvnrepository.com/repos/central'
+		}
+		maven {
+			url 'http://central.maven.org/maven2/'
+		}
+		maven {
+			url 'https://maven.repository.redhat.com/ga'
+		}
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("io.spring.gradle:dependency-management-plugin:0.6.1.RELEASE")
+	}
+}
+
+
+allprojects{
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'idea'
+
+	group = 'com.shang.cloud'
+	version = '0.0.1-SNAPSHOT'
+}
+
+subprojects {
+
+	apply plugin: 'java'
+	apply plugin: 'idea'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	repositories {
+		mavenCentral()
+		maven {
+			url 'http://mvnrepository.com/repos/central'
+		}
+		maven {
+			url 'http://central.maven.org/maven2/'
+		}
+		maven {
+			url 'https://maven.repository.redhat.com/ga'
+		}
+	}
+
+
+	sourceCompatibility = '1.8'
+	targetCompatibility = '1.8'
+
+	dependencyManagement {
+		imports {
+			mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR7'
+		}
+	}
+
+	sourceSets {
+		main {
+			java {
+				srcDirs = ['src/main/java']
+			}
+			resources {
+				srcDirs = ['src/main/resources']
+			}
+		}
+		test {
+			java {
+				srcDirs = ['src/test/java']
+			}
+			resources {
+				srcDirs = ['src/test/resources']
+			}
+		}
+	}
+}

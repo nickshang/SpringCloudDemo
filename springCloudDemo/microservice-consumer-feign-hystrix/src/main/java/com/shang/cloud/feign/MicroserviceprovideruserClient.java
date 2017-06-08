@@ -1,7 +1,6 @@
 package com.shang.cloud.feign;
 
 import com.shang.cloud.entity.User;
-import com.shang.config.HystrixClientFallback;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

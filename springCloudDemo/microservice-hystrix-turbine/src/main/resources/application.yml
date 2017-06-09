@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: microservice-hystrix-turbine
+
+server:
+  port: 9708
+
+security:
+  basic:
+    enabled: false
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id:  ${spring.application.name}:${spring.application.instance_id:${server.port}}
+  client:
+    healthcheck:
+        enabled: true
+    serviceUrl:
+      defaultZone: http://user:123456@localhost:8761/eureka/
+
+turbine:
+  aggregator:
+    clusterConfig: CUSTOMERS
+  app-config:
+    
+logging:
+  level:
+    root: INFO
+
+execution.isolation.thread.timeoutInMilliseconds: 5000 #修改默认的超时时间

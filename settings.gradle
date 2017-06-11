@@ -14,8 +14,6 @@ include 'springCloudDemo:micorserver-discovery-eureka-peer-awareness'
 findProject(':springCloudDemo:micorserver-discovery-eureka-peer-awareness')?.name = 'micorserver-discovery-eureka-peer-awareness'
 include 'springCloudDemo:microservice-consumer-feign-hystrix'
 findProject(':springCloudDemo:microservice-consumer-feign-hystrix')?.name = 'microservice-consumer-feign-hystrix'
-include '../SpringCloudDem/SpringCloudDemo/microservice-consumer-feign-hystrix-dashboard'
-findProject(':../SpringCloudDem/SpringCloudDemo/microservice-consumer-feign-hystrix-dashboard')?.name = 'microservice-consumer-feign-hystrix-dashboard'
 include 'springCloudDemo:microservice-consumer-feign-hystrix-dashboard'
 findProject(':springCloudDemo:microservice-consumer-feign-hystrix-dashboard')?.name = 'microservice-consumer-feign-hystrix-dashboard'
 

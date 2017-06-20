@@ -23,3 +23,7 @@ hs_err_pid*
 .idea/
 .gradle/
 springCloudDemo/micorserver-discovery-eureka/build/
+springCloudDemo/microservice-provide-user/build/
+springCloudDemo/microservice-hystrix-turbine/build/
+springCloudDemo/microservice-provider-user-ribbon-with-hystrix/build/
+springCloudDemo/microservice-consumer-feign-hystrix-dashboard/build/

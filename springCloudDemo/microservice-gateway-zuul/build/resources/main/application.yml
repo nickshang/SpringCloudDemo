@@ -1,0 +1,79 @@
+spring:
+  application:
+    name: microservicegatewayzuul
+
+server:
+  port: 7903
+
+logging:
+  level:
+    root: INFO
+    com.shang: TRACE
+    com.netflix: debug
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id:  ${spring.application.name}:${spring.application.instance_id:${server.port}}
+  client:
+    healthcheck:
+        enabled: true
+    serviceUrl:
+          defaultZone: http://user:123456@localhost:8761/eureka/
+
+security:
+  basic:
+    enabled: false
+
+### 指定微服务，可以指定忽略的微服务
+zuul:
+  ignored-services: '*'
+  routes:
+    microserviceprovideruser: /user/**    # 为指定的微服务指定路径
+
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000 # 文件上传时间超时控制
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+
+### 细颗粒度的控制
+#zuul:
+#  routes:
+#    users:                                 # 自定义名称
+#      path: /user_path/**                  # 访问路径  ** 分层匹配 * 一层匹配
+#      serviceId: microserviceprovideruser  # 微服务名
+
+### 使用url替换serviceId
+#zuul:
+#  routes:
+#    users:
+#      path: /user_url/**
+#      url: http://localhost:7908
+
+### 使用url不能支持
+## These simple url-routes don’t get executed as a HystrixCommand nor can you loadbalance multiple URLs with Ribbon.
+## To achieve this, specify a service-route and configure a Ribbon client for the serviceId (this currently requires d
+## isabling Eureka support in Ribbon: see above for more information), e.g.
+#zuul:
+#  routes:
+#    abc:
+#      path: /user_url/**
+#      serviceId: microserviceprovideruser
+#
+#ribbon:
+#  eureka:
+#    enabled: false
+#
+#microserviceprovideruser:                   # 指明:serviceId
+#  ribbon:
+#    listOfServers: http://localhost:7908,http://localhost:7909
+
+
+### zuul.prefix使用
+#zuul:
+#  ignored-services: '*'
+#  routes:
+#    microserviceprovideruser: /user/**      # 为指定的微服务指定路径
+#  prefix: /simple
+#  strip-prefix: false                       # http://localhost:7903/simple/user/1 应用场景，当服务路径：homepage:localhost,修改为:localhost/simple

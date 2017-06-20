@@ -3,7 +3,7 @@ spring:
     name: microservice-hystrix-turbine
 
 server:
-  port: 9708
+  port: 9709
 
 security:
   basic:
@@ -21,8 +21,8 @@ eureka:
 
 turbine:
   aggregator:
-    clusterConfig: CUSTOMERS
-  app-config:
+    clusterConfig: MICROSERVICEPROVIDERUSERRIBBON  # 访问单个应用的状态：http://localhost:9709/turbine.stream?cluster=MICROSERVICEPROVIDERUSERRIBBON
+  app-config: MICROSERVICEPROVIDERUSERRIBBON
     
 logging:
   level:

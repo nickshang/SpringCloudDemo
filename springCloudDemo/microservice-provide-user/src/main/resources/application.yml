@@ -13,6 +13,12 @@ spring:
     schema: classpath:schema.sql
   application:
     name: microserviceprovideruser    # 应用名称
+    #name: microserviceprovideruser-v1    # 应用名称  zuul strip-prefix属性适用
+  http:
+    multipart:
+      max-file-size: 100Mb
+      max-request-size: 200Mb
+
 
 logging:
   level:

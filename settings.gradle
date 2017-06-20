@@ -17,4 +17,6 @@ findProject(':springCloudDemo:microservice-consumer-feign-hystrix')?.name = 'mic
 include 'springCloudDemo:microservice-consumer-feign-hystrix-dashboard'
 include 'springCloudDemo:microservice-hystrix-turbine'
 findProject(':springCloudDemo:microservice-hystrix-turbine')?.name = 'microservice-hystrix-turbine'
+include 'springCloudDemo:microservice-gateway-zuul'
+findProject(':springCloudDemo:microservice-gateway-zuul')?.name = 'microservice-gateway-zuul'
 

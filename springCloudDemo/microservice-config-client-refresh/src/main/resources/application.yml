@@ -1,0 +1,38 @@
+#server:
+#  port: 7809
+
+
+
+
+
+
+#spring:
+#  application:
+#    name: demo                             # 应用名称[对应config-repo中的项目名称]
+#  cloud:
+#    config:
+#      uri: http://localhost:7808         # 固定ID
+#      profile: dev
+#      label: develop                      # 当后端存储是git默认用mater
+#      username: user
+#      password: 123456
+#profile: profile-name                    # 传统配置文件(可以验证去远程取配置文件)
+
+#logging:
+#  level:
+#    root: INFO
+#    com.shang: INFO
+#
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#    instance-id:  ${spring.application.name}:${spring.application.instance_id:${server.port}}
+#  client:
+#    healthcheck:
+#      enabled: true
+#    serviceUrl:
+#      defaultZone: http://user:123456@localhost:8761/eureka/
+#
+#security:
+#  basic:
+#    enabled: false

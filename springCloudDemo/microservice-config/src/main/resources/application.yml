@@ -1,0 +1,41 @@
+server:
+  port: 7808
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: user
+    password: 123456
+
+spring:
+  application:
+    name: microserviceconfigserver    # 应用名称
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/nickshang/config-repo
+          username:
+          password:
+#          uri: https://github.com/nickshang/{application}            # one repo per profile 一个为项目对应一个配置文件
+
+encrypt:
+  key: demo                                                           # 对称加密
+
+logging:
+  level:
+    root: INFO
+    com.shang: INFO
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id:  ${spring.application.name}:${spring.application.instance_id:${server.port}}
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://user:123456@localhost:8761/eureka/
+
+

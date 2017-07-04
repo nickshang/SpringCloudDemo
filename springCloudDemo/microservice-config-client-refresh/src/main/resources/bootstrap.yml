@@ -1,0 +1,63 @@
+#采用单例服务地址
+#spring:
+#  cloud:
+#    config:
+#      uri: http://localhost:7808
+
+#采用注册中心服务地址
+spring:
+  profiles:
+    active: dev1
+  application:
+    name: demo
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    config:
+      profile: dev
+      label: develop                      # 当后端存储是git默认用mater
+      discovery:
+        enabled: true
+        service-id: MICROSERVICECONFIGSERVER
+      username: user
+      password: 123456
+
+---
+server:
+  port: 6800
+spring:
+  profiles: dev1
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    healthcheck:
+        enabled: true
+    serviceUrl:
+      defaultZone: http://user:123456@localhost:8761/eureka/
+
+---
+server:
+  port: 6801
+spring:
+  profiles: dev2
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    healthcheck:
+        enabled: true
+    serviceUrl:
+      defaultZone: http://user:123456@localhost:8761/eureka/
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#    instance-id:  ${spring.application.name}:${spring.application.instance_id:${server.port}}
+#  client:
+#    healthcheck:
+#      enabled: true
+#    serviceUrl:
+#      defaultZone: http://user:123456@localhost:8761/eureka/

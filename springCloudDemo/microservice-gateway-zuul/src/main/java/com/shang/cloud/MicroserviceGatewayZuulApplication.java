@@ -27,7 +27,7 @@ public class MicroserviceGatewayZuulApplication {
 	 *
 	 * This means that a serviceId "myusers-v1" will be mapped to route "/v1/myusers/**".
 	 *
-	 * url:http://localhost:7903/v1/microserviceprovideruser/simple/1
+	 * 访问连接url:http://localhost:7903/v1/microserviceprovideruser/simple/1
 	 * @return
 	 */
 	@Bean

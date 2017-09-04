@@ -1,6 +1,5 @@
 package com.shang.cloud;
 
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.cloud.netflix.zuul.filters.route.ZuulFallbackProvider;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
